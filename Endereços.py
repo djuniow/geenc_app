@@ -40,14 +40,14 @@ if authenticator_status:
     endereco_unidade = endereco_unidade.reset_index()
     lat_unidade = endereco_unidade['LATITUDE:'][0]
     log_unidade = endereco_unidade['LONGITUDE:'][0]
-    nome_unidade = str(endereco_unidade["UNIDADE:"][0]).replace(' ','2%')
-    end_unidade = str(endereco_unidade["CEP:"][0]).replace(' ','2%')
+    nome_unidade = str(endereco_unidade["UNIDADE:"][0])
+    end_unidade = str(endereco_unidade["CEP:"][0])
     st.subheader(endereco_unidade['UNIDADE:'][0])
     st.write('Endereço:')
     st.write(endereco_unidade['CEP:'][0])
 
     st.write('Compartilhar')
-    st.markdown(f'[![Foo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/50px-WhatsApp.svg.png)](https://wa.me/?text="{nome_unidade}2%{end_unidade})')
+    st.markdown(f'[![Foo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/50px-WhatsApp.svg.png)](https://wa.me/?text="{nome_unidade}{end_unidade})')
 elif authenticator_status == False:
     st.error('Usuário errado')
 elif authenticator_status == None:
