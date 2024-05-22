@@ -40,9 +40,9 @@ if authenticator_status:
     endereco_unidade = endereco_unidade.reset_index()
     lat_unidade = endereco_unidade['LATITUDE:'][0]
     log_unidade = endereco_unidade['LONGITUDE:'][0]
-    nome_unidade = str(endereco_unidade["UNIDADE:"][0])
+    nome_unidade = str(endereco_unidade["UNIDADE:"][0]).replace(' ','2%')
     end_unidade = str(endereco_unidade["CEP:"][0]).replace(' ','2%')
-    st.subheader(endereco_unidade['UNIDADE:'][0]).replace(' ','2%')
+    st.subheader(endereco_unidade['UNIDADE:'][0])
     st.write('Endereço:')
     st.write(endereco_unidade['CEP:'][0])
 
