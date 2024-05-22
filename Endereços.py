@@ -23,7 +23,7 @@ name, authenticator_status, username = authenticator.login()
 
 @st.cache_resource
 def carregamento_uni():
-    df_unidades = pd.read_excel('main\dados\endereco_unidades.xlsx')
+    df_unidades = pd.read_excel('dados\endereco_unidades.xlsx')
     df_unidades_lista = df_unidades['UNIDADE:'].drop_duplicates()
 
     return df_unidades_lista , df_unidades
