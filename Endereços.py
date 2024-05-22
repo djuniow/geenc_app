@@ -42,7 +42,7 @@ if authenticator_status:
     log_unidade = endereco_unidade['LONGITUDE:'][0]
     nome_unidade = str(endereco_unidade["UNIDADE:"][0])
     end_unidade = str(endereco_unidade["CEP:"][0])
-    texto = ('*'+nome_unidade+'* '+"%0"+end_unidade+"%0"+'Waze:'+"%0"+link_waze).replace(' ', '&nbsp;')#nome da unidade e endereço
+    texto = ('*'+nome_unidade+'* '+"%0"+end_unidade+"%0"+'Waze:'+"%0").replace(' ', '&nbsp;')#nome da unidade e endereço
     st.subheader(endereco_unidade['UNIDADE:'][0])
     st.write('Endereço:')
     st.write(endereco_unidade['CEP:'][0])
