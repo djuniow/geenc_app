@@ -1,7 +1,6 @@
 import pandas as pd
 import streamlit as st
 
-@st.cache_data
 def carregamentos(caminho):
     df_linhas = pd.read_excel(caminho, sheet_name='bd')
     return df_linhas
