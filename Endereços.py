@@ -42,12 +42,13 @@ if authenticator_status:
     log_unidade = endereco_unidade['LONGITUDE:'][0]
     nome_unidade = str(endereco_unidade["UNIDADE:"][0])
     end_unidade = str(endereco_unidade["CEP:"][0])
+    texto = nome_unidade+end_unidade
     st.subheader(endereco_unidade['UNIDADE:'][0])
     st.write('Endereço:')
     st.write(endereco_unidade['CEP:'][0])
 
     st.write('Compartilhar')
-    st.markdown(f'[![Foo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/50px-WhatsApp.svg.png)](https://wa.me/?text="{nome_unidade}{end_unidade})')
+    st.markdown(f'[![Foo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/50px-WhatsApp.svg.png)](https://wa.me/?text="{texto)')
 elif authenticator_status == False:
     st.error('Usuário errado')
 elif authenticator_status == None:
