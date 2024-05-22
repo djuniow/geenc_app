@@ -42,7 +42,8 @@ if authenticator_status:
     log_unidade = endereco_unidade['LONGITUDE:'][0]
     nome_unidade = str(endereco_unidade["UNIDADE:"][0])
     end_unidade = str(endereco_unidade["CEP:"][0])
-    texto = (nome_unidade+end_unidade).replace(' ', '&nbsp;')
+    texto = (nome_unidade+''
+                          ''+end_unidade).replace(' ', '&nbsp;')
     st.subheader(endereco_unidade['UNIDADE:'][0])
     st.write('Endereço:')
     st.write(endereco_unidade['CEP:'][0])
