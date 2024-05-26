@@ -34,7 +34,7 @@ def entrada(chamada_pesquisa):
         quantidade = 0
         distancia = 0
         #rod
-        colunas = ['Sentido','Seq.', 'Local', 'Hora Chegada', 'Hora Partida','Tempo Serviço','Tempo Percurso', 'Distância']
+        colunas = ['Sentido','Seq.', 'Local', 'Hora Chegada', 'Hora Partida']
         for i in rod:
             quantidade = quantidade + 1
             mostra_linhas = df_linhas[df_linhas['No. da Linha'] == i][cl]
@@ -117,7 +117,7 @@ def entrada(chamada_pesquisa):
 
 
 
-        colunas = ['Sentido','Seq.', 'Local', 'Hora Chegada', 'Hora Partida','Tempo Serviço','Tempo Percurso', 'Distância']
+        colunas = ['Sentido','Seq.', 'Local', 'Hora Chegada', 'Hora Partida']
         for i in rod:
             quantidade = quantidade + 1
             mostra_linhas = df_linhas.loc[(df_linhas['No. da Linha'] == i)][cl]
