@@ -225,5 +225,4 @@ pesq_linha = st.selectbox(label='Selecione a Linha ou Unidade', options=junt.sor
 
 pesq_unid = st.selectbox(label='Selecione a Unidade para conexão:', options=junt1.sort_index())
 
-with st.container(height=800):
-    entrada(chamada_pesquisa=pesq_linha)
+entrada(chamada_pesquisa=pesq_linha)
