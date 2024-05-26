@@ -48,7 +48,7 @@ if authenticator_status:
     st.write(endereco_unidade['CEP:'][0])
 
     st.write('Compartilhar')
-    st.markdown(f'[![Foo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/50px-WhatsApp.svg.png)](https://api.whatsapp.com/send?text={texto})')
+    st.markdown(f'[![Foo](https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/50px-WhatsApp.svg.png)](https://api.whatsapp.com/send?text={nome_unidade}0%{end_unidade})')
 elif authenticator_status == False:
     st.error('Usuário errado')
 elif authenticator_status == None:
