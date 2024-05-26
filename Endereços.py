@@ -4,7 +4,7 @@ import streamlit_authenticator as stauth
 from streamlit_authenticator.utilities.hasher import  Hasher
 import yaml
 from yaml.loader import SafeLoader
-
+st.set_page_config(layout='wide')
 hashed_password = Hasher(['abc','def']).generate()
 
 with open ('config.yaml') as file:
