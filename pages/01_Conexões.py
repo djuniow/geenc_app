@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+st.set_page_config(layout='wide')
 
 def carregamentos(caminho):
     df_linhas = pd.read_excel(caminho, sheet_name='bd')
