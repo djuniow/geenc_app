@@ -17,3 +17,4 @@ elif type(busca) is str:
     st.table(data_busca)
 else:
     st.table(data)
+    print('foi')
