@@ -12,6 +12,8 @@ def carregamento_uni():
     return df_unidades_lista , df_unidades
 
 
+
+st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)
 df_unidades_lista, df_unidades = carregamento_uni()
 
 uni_pesquisa = st.selectbox(label='Unidade',options=df_unidades_lista)

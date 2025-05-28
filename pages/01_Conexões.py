@@ -221,6 +221,8 @@ junt1 = pd.concat([sele1['item'],suges_linha, suges_unid]).dropna()
 
 
 st.title('Consulta conexões')
+
+st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)
 pesq_linha = st.selectbox(label='Selecione a Linha ou Unidade', options=junt.sort_index())
 
 pesq_unid = st.selectbox(label='Selecione a Unidade para conexão:', options=junt1.sort_index())

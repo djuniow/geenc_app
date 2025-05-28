@@ -1,25 +1,18 @@
 import streamlit as st
 
+st.title('CTCE INDAIATUBA/GEENC')
 
-# col1, col2 = st.columns(2)
-#
-#
-# with col1:
-#     st.markdown(
-#         """<a href="https://idugeenc.streamlit.app/Conexões">
-#         <img src="data:image/png;base64,{}" width="65">
-#         </a>""".format(
-#             base64.b64encode(open("images/mapa.png", "rb").read()).decode()
-#         ),
-#         unsafe_allow_html=True,
-#     )
-#     st.markdown(
-#         """<a href="https://idugeenc.streamlit.app/Locais">
-#         <img src="data:image/jpg;base64,{}" width="65">
-#         </a>""".format(
-#             base64.b64encode(open("images/endereços.jpg", "rb").read()).decode()
-#         ),
-#         unsafe_allow_html=True,
-#     )
+col1, col2 = st.columns(2)
 
-st.page_link(page='pages/01_Conexões.py',icon=":material/analytics:" )
+with col1:
+    st.page_link(label='🚚Conexões🚚',page='pages/01_Conexões.py',icon='🔴',use_container_width=True)
+    st.divider()
+    st.page_link(label='⚠️Prismas⚠️', page='pages/02_Prismas.py', icon='🔵', use_container_width=True)
+
+with col2:
+    st.page_link(label='🔥Contingencia🔥', page='pages/01_Conexões.py', icon='🔵', use_container_width=True)
+    st.divider()
+    st.page_link(label='🌎Locais🌎', page='pages/02_Prismas.py', icon='🔴', use_container_width=True)
+
+
+st.write('Desenvolvido por Djalma Luis')

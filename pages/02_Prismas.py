@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 st.title('Prismas')
 
+st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)
 
 data = pd.read_excel('dados/prismas.xlsx')
 
@@ -17,4 +18,3 @@ elif type(busca) is str:
     st.table(data_busca)
 else:
     st.table(data)
-    print('foi')
