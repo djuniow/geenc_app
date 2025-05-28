@@ -14,7 +14,7 @@ with col1:
         unsafe_allow_html=True,
     )
     st.markdown(
-        """<a href="https://idugeenc.streamlit.app/Endereços">
+        """<a href="https://idugeenc.streamlit.app/Locais">
         <img src="data:image/jpg;base64,{}" width="65">
         </a>""".format(
             base64.b64encode(open("images/endereços.jpg", "rb").read()).decode()
