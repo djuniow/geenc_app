@@ -9,7 +9,7 @@ with col1:
         """<a href="https://idugeenc.streamlit.app/Conexões">
         <img src="data:image/png;base64,{}" width="25">
         </a>""".format(
-            base64.b64encode(open("images/mapa.PNG", "rb").read()).decode()
+            base64.b64encode(open("images/mapa.png", "rb").read()).decode()
         ),
         unsafe_allow_html=True,
     )
