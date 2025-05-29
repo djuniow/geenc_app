@@ -117,6 +117,7 @@ def entrada(chamada_pesquisa):
             st.markdown(css + html_tabela, unsafe_allow_html=True)
 
             # Adiciona um divisor visual
+
             st.divider()
 
 
