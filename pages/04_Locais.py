@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 
 
-st.set_page_config(layout='wide')
+st.set_page_config(layout='wide',initial_sidebar_state="collapsed",page_icon='images/caminhão.PNG')
 
 @st.cache_resource
 def carregamento_uni():

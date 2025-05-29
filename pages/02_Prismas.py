@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+st.set_page_config(layout='wide',initial_sidebar_state="collapsed",page_icon='images/caminhão.PNG')
 st.title('Prismas')
 
 st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)

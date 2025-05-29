@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-st.set_page_config(layout='wide')
+st.set_page_config(layout='wide',initial_sidebar_state="collapsed",page_icon='images/caminhão.PNG')
 
 def carregamentos(caminho):
     df_linhas = pd.read_excel(caminho, sheet_name='bd')
@@ -208,7 +208,36 @@ def entrada(chamada_pesquisa):
             d = str(dom)
             st.info('Linha: ' + linha_pesquisa +'  \n '+' Tansportadora:  '+transp+'  \nVeiculo: '+tamanhocam)
             st.warning('Frequência: '+'|'+se+'|'+'|'+t+'|'+'|'+q+'|'+'|'+qi+'|'+'|'+s+'|'+'|'+sa+'|'+'|'+d+'|')
-            st.table(mostra_linhas[colunas].style.applymap(color_survived, subset=['Local']))
+            #st.table(mostra_linhas[colunas].style.applymap(color_survived, subset=['Local']))
+            html_tabela = mostra_linhas[colunas].style.applymap(color_survived, subset=['Local'])
+
+            html_tabela = mostra_linhas[colunas].to_html(index=False, classes='minha-tabela')
+
+            # Define o estilo CSS para a tabela
+            css = """
+            <style>
+            .minha-tabela {
+               border-collapse: collapse;
+               width: 100%;
+               font-family: Arial, sans-serif;
+            }
+            .minha-tabela th, .minha-tabela td {
+               border: 1px solid black;
+               padding: 8px;
+               text-align: left;
+            }
+            .minha-tabela th {
+               background-color: #f2f2f2;
+            }
+            </style>"""
+
+            # Renderiza o CSS + HTML da tabela no Streamlit
+            st.markdown(css + html_tabela, unsafe_allow_html=True)
+
+            # Adiciona um divisor visual
+
+
+            st.divider()
 
             st.divider()
 
@@ -246,9 +275,12 @@ junt = pd.concat([sele['item'],suges_linha, suges_unid]).dropna()
 junt1 = pd.concat([sele1['item'],suges_linha, suges_unid]).dropna()
 
 
+st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)
+
+
 st.title('Consulta conexões')
 
-st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)
+
 pesq_linha = st.selectbox(label='Selecione a Linha ou Unidade', options=junt.sort_index())
 
 pesq_unid = st.selectbox(label='Selecione a Unidade para conexão:', options=junt1.sort_index())
