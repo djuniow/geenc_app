@@ -91,9 +91,39 @@ def entrada(chamada_pesquisa):
             d = str(dom)
             st.info('Linha: ' + linha_pesquisa + '  \n ' + ' Tansportadora:  ' + transp + '  \nVeiculo: ' + tamanhocam)
             st.warning('Frequência: ' + '|' + se + '|' + '|' + t + '|' + '|' + q + '|' + '|' + qi + '|' + '|' + s + '|' + '|' + sa + '|' + '|' + d + '|')
-            #st.table(mostra_linhas[colunas].style.applymap(color_survived, subset=['Local']))
-            st.table(mostra_linhas[colunas])
+
+            # Gera a tabela HTML a partir do DataFrame 'mostra_linhas' com as colunas selecionadas
+            html_tabela = mostra_linhas[colunas].to_html(index=False, classes='minha-tabela')
+
+            # Define o estilo CSS para a tabela
+            css = """
+            <style>
+            .minha-tabela {
+               border-collapse: collapse;
+               width: 100%;
+               font-family: Arial, sans-serif;
+            }
+            .minha-tabela th, .minha-tabela td {
+               border: 1px solid black;
+               padding: 8px;
+               text-align: left;
+            }
+            .minha-tabela th {
+               background-color: #f2f2f2;
+            }
+            </style>"""
+
+            # Renderiza o CSS + HTML da tabela no Streamlit
+            st.markdown(css + html_tabela, unsafe_allow_html=True)
+
+            # Adiciona um divisor visual
             st.divider()
+
+
+
+
+
+
 
 
     else:
@@ -179,7 +209,7 @@ def entrada(chamada_pesquisa):
             st.table(mostra_linhas[colunas].style.applymap(color_survived, subset=['Local']))
 
             st.divider()
-            #print(df_resultadoPesquisa)
+
 
 df_linhas = carregamentos('dados/malha.xlsx')
 
@@ -212,12 +242,6 @@ sele = pd.DataFrame({'item':['Selecione']})
 sele1 = pd.DataFrame({'item':['CTCE INDAIATUBA']})
 junt = pd.concat([sele['item'],suges_linha, suges_unid]).dropna()
 junt1 = pd.concat([sele1['item'],suges_linha, suges_unid]).dropna()
-
-
-
-
-
-
 
 
 st.title('Consulta conexões')
