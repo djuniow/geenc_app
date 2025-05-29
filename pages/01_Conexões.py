@@ -118,6 +118,7 @@ def entrada(chamada_pesquisa):
 
             # Adiciona um divisor visual
 
+
             st.divider()
 
 
