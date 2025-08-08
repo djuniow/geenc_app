@@ -7,6 +7,8 @@ def carregamentos(caminho):
     df_linhas = pd.read_excel(caminho, sheet_name='bd')
     return df_linhas
 
+def on_select(selection):
+    st.write("Selected rows:", selection)
 def entrada(linha_pesquisa):
 
 
@@ -79,6 +81,8 @@ def entrada(linha_pesquisa):
         st.warning('Frequência: ' + '|' + se + '|' + '|' + t + '|' + '|' + q + '|' + '|' + qi + '|' + '|' + s + '|' + '|' + sa + '|' + '|' + d + '|')
 
         # Gera a tabela HTML a partir do DataFrame 'mostra_linhas' com as colunas selecionadas
+
+        st.dataframe(mostra_linhas[colunas], on)
         html_tabela = mostra_linhas[colunas].to_html(index=False, classes='minha-tabela')
 
         # Define o estilo CSS para a tabela
@@ -142,6 +146,8 @@ junt = pd.concat([sele['item'],suges_linha]).dropna()
 st.page_link(label='Voltar',page='Endereços.py',icon='⬅️',use_container_width=True)
 
 
-pesq_linha = st.selectbox(label='Selecione a Linha ou Unidade', options=junt.sort_index())
+pesq_linha = st.selectbox(label='Linha:', options=junt.sort_index())
+motivo_atraso = st.selectbox(label='Motivo:',
+                             options=['transito intenço','quebra', 'pneu furado', ])
 
 entrada(linha_pesquisa=pesq_linha)
