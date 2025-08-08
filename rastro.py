@@ -26,7 +26,7 @@ def get_rastreamento(objetos, token, evento, resultado):
 
 
     response = requests.get(
-        f'https://api.correios.com.br/srorastrointerno/v2/rastros?codigosObjetos={objetos}&resultado={resultado}&evento={evento}&texto=I',
+        f'https://api.correios.com.br/srorastro/v1/objetos?codigosObjetos={objetos}&resultado={resultado}&evento={evento}&texto=I',
         headers=headers)
 
     response = response.json()
@@ -112,6 +112,8 @@ def get_postagem(data):
                                 token=token,
                                 evento="PO",
                                 resultado='T')
+
+    print(response)
 
 
     try:
