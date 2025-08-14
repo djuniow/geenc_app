@@ -72,8 +72,7 @@ def get_postagem(data):
 def get_num_obj(num):
     padrao = r'[A-Z]{2}\d{9}[A-Z]{2}'
     result = re.search(padrao, num)
-    st.write(result)
-    return result
+    return result.group(0)
 
 def cor_prazo(prazo):
     '''
