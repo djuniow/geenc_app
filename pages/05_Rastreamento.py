@@ -33,8 +33,7 @@ if st.button('Pesquisar'):
         st.write(f"altura: {resultado['altura']}")
 
     with col2:
-
-        resultado
+        st.write('')
 
 
 
