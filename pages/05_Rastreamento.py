@@ -3,12 +3,17 @@ import rastro
 from datetime import datetime
 from streamlit_qrcode_scanner import qrcode_scanner
 
-num_obj = st.text_input(label="Objeto")
-with st.expander("Leitor"):
-    qr_code = qrcode_scanner()
+
+
+qr_code = qrcode_scanner()
 if qr_code:
     num_correto = rastro.get_num_obj(qr_code)
     st.write(num_correto)
+else:
+    num_correto = ''
+
+num_obj = st.text_input(label="Objeto",value=num_correto)
+
 if st.button('Pesquisar'):
     resultado = rastro.get_postagem(data=num_obj)
     col1, col2 = st.columns(2)
