@@ -19,6 +19,7 @@ num_obj = num_obj.upper()
 if st.button('Pesquisar'):
     resultado = rastro.get_postagem(data=num_obj)
     col1, col2 = st.columns(2)
+
     with col1:
         data_str = resultado['dtPrevista']
         data_convertida = datetime.fromisoformat(data_str)
