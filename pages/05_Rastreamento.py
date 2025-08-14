@@ -13,6 +13,7 @@ else:
     num_correto = ''
 
 num_obj = st.text_input(label="Objeto",value=num_correto)
+num_obj = num_obj.upper()
 
 if st.button('Pesquisar'):
     resultado = rastro.get_postagem(data=num_obj)
@@ -24,12 +25,8 @@ if st.button('Pesquisar'):
 
         st.write(f"Categoria: {resultado['categoria']}")
         with st.container():
-
-            st.markdown(f"""
-                <div style="background-color:#dff0d8; padding:15px; border-radius:8px;">
-                    <h4 style="color:#3c763d;">{data_convertida - agora}</h4>
-                </div>
-            """, unsafe_allow_html=True)
+            prazo = data_convertida - agora
+            st.markdown(rastro.cor_prazo(int(prazo.days)), unsafe_allow_html=True)
         st.write(f"Data max: {resultado['dtPrevista']}")
         st.write(f"largura: {resultado['largura']}")
         st.write(f"comprimento: {resultado['comprimento']}")

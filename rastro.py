@@ -74,6 +74,29 @@ def get_num_obj(num):
     result = re.search(padrao, num)
     return result
 
+def cor_prazo(prazo):
+    '''
+
+    :param prazo:
+    :return:
+    '''
+
+    if prazo > 4:
+        back = '#dff0d8' #verde
+
+
+    elif prazo <= 4 and prazo > 0:
+        back = '#f5e105' #amarelo
+    elif prazo == 0:
+        back = '#f50505' #vermelho
+    elif prazo < 0:
+        back = '#050505' #preto
+    ajuste = f"""
+                <div style="background-color:{back}; padding:15px; border-radius:8px;">
+                    <h4 style="color:#3c763d;">{prazo}</h4>
+                </div>
+            """
+    return ajuste
 
 
 
