@@ -1,7 +1,7 @@
 import requests
 import pandas as pd
 import streamlit as st
-
+import re
 
 def get_token():
     '''
@@ -60,14 +60,23 @@ def get_postagem(data):
         'largura':get_values(response['objetos'][0]['largura']),
         'comprimento':get_values(response['objetos'][0]['comprimento']),
         'altura':get_values(response['objetos'][0]['altura']),
-        'diametro':get_values(response['objetos'][0]['diametro']),
         'peso':get_values(response['objetos'][0]['peso']),
+        'eventos':get_values(response['objetos'][0]['eventos'])
 
 
     }
 
     print(dados)
     return dados
+
+def get_num_obj(num):
+    padrao = r'[A-Z]{2}\d{9}[A-Z]{2}'
+    result = re.search(padrao, num)
+    return result
+
+
+
+
 
 
 
