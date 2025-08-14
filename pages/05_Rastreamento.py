@@ -1,12 +1,12 @@
 import streamlit as st
 import rastro
-from camera_input_live import camera_input_live
+from streamlit_qrcode_scanner import qrcode_scanner
 
 num_obj = st.text_input(label="Objeto")
-image = camera_input_live()
+qr_code = qrcode_scanner(key='qrcode_scanner')
 
-if image:
-  st.image(image)
+if qr_code:
+  st.write(qr_code)
 
 if st.button('Pesquisar'):
     resultado = rastro.get_postagem(data=num_obj)
