@@ -12,7 +12,7 @@ st.page_link(label='🔥Contingencia🔥', page='pages/03_Contingencia.py', use_
 st.divider()
 st.page_link(label='🌎Locais🌎', page='pages/04_Locais.py', use_container_width=True)
 st.divider()
-st.page_link(label='Prazo', page='pages/05_Rastreamento.py', use_container_width=True)
+st.page_link(label='📦Rastreamento📦', page='pages/05_Rastreamento.py', use_container_width=True)
 
 
 st.write('Desenvolvido por Djalma Luis')

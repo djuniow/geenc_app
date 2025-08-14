@@ -33,41 +33,69 @@ def get_rastreamento(objetos, token, evento, resultado):
     return response
 
 
+# def get_postagem(data):
+#     token, status_token = get_token()
+#
+#     def get_values(data):
+#         try:
+#             info = str(data)
+#             return info
+#
+#         except:
+#             return ""
+#
+#
+#
+#     response = get_rastreamento(objetos=data,
+#                                 token=token,
+#                                 evento="PO",
+#                                 resultado='T')
+#
+#
+#     print(response)
+#     dados = {
+#         'categoria':get_values(response['objetos'][0]['tipoPostal']['categoria']),
+#         'dtPrevista':get_values(response['objetos'][0]['dtPrevista']),
+#         'largura':get_values(response['objetos'][0]['largura']),
+#         'comprimento':get_values(response['objetos'][0]['comprimento']),
+#         'altura':get_values(response['objetos'][0]['altura']),
+#         'peso':get_values(response['objetos'][0]['peso']),
+#         'eventos':get_values(response['objetos'][0]['eventos'])
+#
+#
+#     }
+#
+#     print(dados)
+#     return dados
+
 def get_postagem(data):
     token, status_token = get_token()
 
     def get_values(data):
-        try:
-            info = str(data)
-            print(data)
-            return info
+        return str(data) if data is not None else ""
 
-        except:
-            return "NÂO ENCONTRADO"
-
-
-
-    response = get_rastreamento(objetos=data,
-                                token=token,
-                                evento="PO",
-                                resultado='T')
-
-
+    response = get_rastreamento(objetos=data, token=token, evento="PO", resultado='T')
     print(response)
+
+    objetos = response.get('objetos', [])
+    if not objetos:
+        return {}
+
+    objeto = objetos[0]
+    tipo_postal = objeto.get('tipoPostal', {})
+
     dados = {
-        'categoria':get_values(response['objetos'][0]['tipoPostal']['categoria']),
-        'dtPrevista':get_values(response['objetos'][0]['dtPrevista']),
-        'largura':get_values(response['objetos'][0]['largura']),
-        'comprimento':get_values(response['objetos'][0]['comprimento']),
-        'altura':get_values(response['objetos'][0]['altura']),
-        'peso':get_values(response['objetos'][0]['peso']),
-        'eventos':get_values(response['objetos'][0]['eventos'])
-
-
+        'categoria': get_values(tipo_postal.get('categoria')),
+        'dtPrevista': get_values(objeto.get('dtPrevista')),
+        'largura': get_values(objeto.get('largura')),
+        'comprimento': get_values(objeto.get('comprimento')),
+        'altura': get_values(objeto.get('altura')),
+        'peso': get_values(objeto.get('peso')),
+        'eventos': get_values(objeto.get('eventos'))
     }
 
-    print(dados)
     return dados
+
 
 def get_num_obj(num):
     padrao = r'[A-Z]{2}\d{9}[A-Z]{2}'
