@@ -52,7 +52,7 @@ def get_rastreamento_data_prazo(objetos):
 def get_dados_prazo(data):
     def get_values(value):
         return str(value) if value is not None else ""
-    print('aaaaaaaaaaaaaaaaa',data)
+
 
     dados = {
         'codigo': get_values(data.get('codigo')),
@@ -79,13 +79,13 @@ def get_dados_prazo(data):
 
 def get_postagem(data):
     token, status_token = get_token()
-    print(token)
+
 
     def get_values(data):
         return str(data) if data is not None else ""
 
     response = get_rastreamento(objetos=data, token=token, evento="PO", resultado='T')
-    print(response)
+
 
     objetos = response.get('objetos', [])
     if not objetos:
