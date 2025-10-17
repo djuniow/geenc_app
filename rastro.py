@@ -32,44 +32,54 @@ def get_rastreamento(objetos, token, evento, resultado):
     response = response.json()
     return response
 
+def get_rastreamento_data_prazo(objetos):
+    token, status_token = get_token()
+    '''função que chama na api dos correios e retorna um dicionário
+    arg objetos recebe uma lista
+    arg token recebe uma string'''
 
-# def get_postagem(data):
-#     token, status_token = get_token()
-#
-#     def get_values(data):
-#         try:
-#             info = str(data)
-#             return info
-#
-#         except:
-#             return ""
-#
-#
-#
-#     response = get_rastreamento(objetos=data,
-#                                 token=token,
-#                                 evento="PO",
-#                                 resultado='T')
-#
-#
-#     print(response)
-#     dados = {
-#         'categoria':get_values(response['objetos'][0]['tipoPostal']['categoria']),
-#         'dtPrevista':get_values(response['objetos'][0]['dtPrevista']),
-#         'largura':get_values(response['objetos'][0]['largura']),
-#         'comprimento':get_values(response['objetos'][0]['comprimento']),
-#         'altura':get_values(response['objetos'][0]['altura']),
-#         'peso':get_values(response['objetos'][0]['peso']),
-#         'eventos':get_values(response['objetos'][0]['eventos'])
-#
-#
-#     }
-#
-#     print(dados)
-#     return dados
+    headers = {"Authorization": f"Bearer {token}"}
+
+
+
+    response = requests.get(
+        f'https://api.correios.com.br/datamaxima/v1/objetos/{objetos}',
+        headers=headers)
+
+    response = response.json()
+    resultado = get_dados_prazo(response)
+    return resultado
+def get_dados_prazo(data):
+    def get_values(value):
+        return str(value) if value is not None else ""
+    print('aaaaaaaaaaaaaaaaa',data)
+
+    dados = {
+        'codigo': get_values(data.get('codigo')),
+        'servico': get_values(data.get('servico')),
+        'cepOrigem': get_values(data.get('cepOrigem')),
+        'cepDestino': get_values(data.get('cepDestino')),
+        'prazoEntrega': get_values(data.get('prazoEntrega')),
+        'dataPostagem': get_values(data.get('dataPostagem')),
+        'dataMaxEntrega': get_values(data.get('dataMaxEntrega')),
+        'postagemDH': get_values(data.get('postagemDH')),
+        'dataUltimoEvento': get_values(data.get('dataUltimoEvento')),
+        'codigoUltimoEvento': get_values(data.get('codigoUltimoEvento')),
+        'tipoUltimoEvento': get_values(data.get('tipoUltimoEvento')),
+        'descricaoUltimoEvento': get_values(data.get('descricaoUltimoEvento')),
+        'nuTicket': get_values(data.get('nuTicket')),
+        'formaPagamento': get_values(data.get('formaPagamento')),
+        'valorPagamento': get_values(data.get('valorPagamento')),
+        'nuContrato': get_values(data.get('nuContrato')),
+        'nuCartaoPostagem': get_values(data.get('nuCartaoPostagem')),
+        'cepDestinoValido': get_values(data.get('cepDestinoValido'))
+    }
+
+    return dados
 
 def get_postagem(data):
     token, status_token = get_token()
+    print(token)
 
     def get_values(data):
         return str(data) if data is not None else ""
