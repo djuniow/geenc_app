@@ -7,7 +7,7 @@ def get_token():
     '''
     Função para retornar o token dos correios
     '''
-    headers = {"Authorization": "Basic MTQ0OTE6OTUxMzgy"}
+    headers = {"Authorization": "Basic NTY3MToxNjU3MTYxMA=="}
     response = requests.post('https://api.correios.com.br/token/v1/autentica', headers=headers)
     status = response.status_code
     response_token = response.json()
